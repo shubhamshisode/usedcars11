@@ -1,5 +1,5 @@
-# Use OpenJDK 17 slim
-FROM openjdk:21-slim-bullseye
+# Use OpenJDK 21
+FROM openjdk:21
 
 # Set working directory
 WORKDIR /app
@@ -13,7 +13,7 @@ COPY src src
 # Make Maven wrapper executable
 RUN chmod +x mvnw
 
-# Build the project inside container
+# Build the project inside container (skip tests for speed)
 RUN ./mvnw clean package -DskipTests
 
 # Expose server port
